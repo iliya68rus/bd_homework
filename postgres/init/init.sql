@@ -1,4 +1,9 @@
-CREATE TABLE company
+CREATE DATABASE shop;
+CREATE TABLESPACE shop_tabspace LOCATION '/shop';
+CREATE ROLE backend;
+CREATE SCHEMA shop;
+
+CREATE TABLE shop.company
 (
     id    int PRIMARY KEY,
     name  varchar(50) NOT NULL,
@@ -7,13 +12,13 @@ CREATE TABLE company
     type  varchar(50) NOT NULL
 );
 
-CREATE TABLE category
+CREATE TABLE shop.category
 (
     id   int PRIMARY KEY,
     name varchar(50) NOT NULL
 );
 
-CREATE TABLE product
+CREATE TABLE shop.product
 (
     id          int PRIMARY KEY,
     name        varchar(50)            NOT NULL,
@@ -23,14 +28,14 @@ CREATE TABLE product
     category_id int REFERENCES category
 );
 
-CREATE TABLE consumer
+CREATE TABLE shop.consumer
 (
     id        int PRIMARY KEY,
     full_name varchar(80) NOT NULL,
     phone     varchar(50) NOT NULL
 );
 
-CREATE TABLE purchase
+CREATE TABLE shop.purchase
 (
     id          bigint PRIMARY KEY,
     date        date                    NOT NULL,
@@ -39,20 +44,20 @@ CREATE TABLE purchase
     consumer_id int REFERENCES consumer NOT NULL
 );
 
-CREATE TABLE product_purchase
+CREATE TABLE shop.product_purchase
 (
     product_id  int REFERENCES product     NOT NULL,
     purchase_id bigint REFERENCES purchase NOT NULL,
     PRIMARY KEY (product_id, purchase_id)
 );
 
-CREATE INDEX idx_company_name ON company (name);
-CREATE INDEX idx_product_name ON product (name);
-CREATE INDEX idx_product_price ON product (price);
-CREATE INDEX idx_category_name ON category (name);
-CREATE INDEX idx_purchase_date ON purchase (date);
-CREATE INDEX idx_purchase_sum ON purchase (sum);
-CREATE INDEX idx_consumer_full_name ON consumer (full_name);
+CREATE INDEX shop.idx_company_name ON company (name);
+CREATE INDEX shop.idx_product_name ON product (name);
+CREATE INDEX shop.idx_product_price ON product (price);
+CREATE INDEX shop.idx_category_name ON category (name);
+CREATE INDEX shop.idx_purchase_date ON purchase (date);
+CREATE INDEX shop.idx_purchase_sum ON purchase (sum);
+CREATE INDEX shop.idx_consumer_full_name ON consumer (full_name);
 
 
 
