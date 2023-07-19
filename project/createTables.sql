@@ -76,14 +76,21 @@ CREATE TABLE type_motor_excitation
     name varchar(255) -- название
 );
 
+-- тип трансформатора
+CREATE TABLE type_transformer
+(
+    id   int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) -- название
+);
+
 -- трансформатор
 CREATE TABLE transformer
 (
-    id        int PRIMARY KEY AUTO_INCREMENT,
-    type      varchar(255), -- тип todo вынести
-    power     int,          -- мощность
-    voltage_h int,          -- напряжение ВН (высокое напряжение)
-    voltage_l int           -- напряжение НН (низкое напряжение)
+    id                  int PRIMARY KEY AUTO_INCREMENT,
+    type_transformer_id int, -- ид типа трансформатора
+    power               int, -- мощность
+    voltage_h           int, -- напряжение ВН (высокое напряжение)
+    voltage_l           int  -- напряжение НН (низкое напряжение)
 );
 
 -- зарегестрированный трансформатор
@@ -135,25 +142,32 @@ CREATE TABLE transformer_repair
     note                 varchar(300) -- примечание
 );
 
+-- тип двигателя
+CREATE TABLE type_motor
+(
+    id   int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) -- название
+);
+
 -- двигатель постоянного тока
 CREATE TABLE dc_motor
 (
     id                        int PRIMARY KEY AUTO_INCREMENT,
-    type                      varchar(255), -- тип todo вынести
-    power                     int,          -- мощность
-    inductor_voltage          int,          -- напряжение индуктора
-    inductor_current          int,          -- ток индуктора
-    number_revolutions        int,          -- число оборотов
-    armature_voltage          int,          -- напряжение якоря
-    armature_current          int,          -- ток якоря
-    type_motor_excitation_id  int,          -- ид вида возбуждения
-    excitation_voltage        int,          -- напряжение возбуждения
-    excitation_current        int,          -- ток возбуждения
-    number_output_ends        int,          -- количество  выводных концов
-    type2                     varchar(255), -- тип щеток и размер todo вынести
-    drive_side_bearing_id     int,          -- ид типа подшипника со стороны привода
-    collector_side_bearing_id int,          -- ид типа подшипника со стороны коллектора
-    efficiency                int           -- КПД %
+    type_motor_id             int, -- ид типа двигателя
+    power                     int, -- мощность
+    inductor_voltage          int, -- напряжение индуктора
+    inductor_current          int, -- ток индуктора
+    number_revolutions        int, -- число оборотов
+    armature_voltage          int, -- напряжение якоря
+    armature_current          int, -- ток якоря
+    type_motor_excitation_id  int, -- ид вида возбуждения
+    excitation_voltage        int, -- напряжение возбуждения
+    excitation_current        int, -- ток возбуждения
+    number_output_ends        int, -- количество  выводных концов
+    electric_motor_brushes_id int, -- ид щеток
+    drive_side_bearing_id     int, -- ид типа подшипника со стороны привода
+    collector_side_bearing_id int, -- ид типа подшипника со стороны коллектора
+    efficiency                int  -- КПД %
 );
 
 -- зарегестрированный двигатель постоянного тока
@@ -215,21 +229,21 @@ CREATE TABLE phase_connection
 -- двигатель переменного тока
 CREATE TABLE ac_motor
 (
-    id                  int PRIMARY KEY AUTO_INCREMENT,
-    type                varchar(255), -- тип todo вынести
-    power               int,          -- мощность
-    voltage             int,          -- напряжение
-    rated_current       int,          -- номинальный ток
-    number_revolutions  int,          -- число оборотов
-    rotor_voltage       int,          -- напряжение ротора
-    rotor_current       int,          -- ток ротора
-    phase_connection_id int,          -- ид соединения фаз
-    number_output_ends  int,          -- количество  выводных концов
-    type2               varchar(255), -- тип щеток и размер todo вынести
-    front_bearing_id    int,          -- тип переднего подшипника
-    rear_bearing_id     int,          -- тип заднего подшипника
-    cos_f               int,          -- cos ф
-    efficiency          int           -- КПД %
+    id                        int PRIMARY KEY AUTO_INCREMENT,
+    type_motor_id             int, -- ид типа двигателя
+    power                     int, -- мощность
+    voltage                   int, -- напряжение
+    rated_current             int, -- номинальный ток
+    number_revolutions        int, -- число оборотов
+    rotor_voltage             int, -- напряжение ротора
+    rotor_current             int, -- ток ротора
+    phase_connection_id       int, -- ид соединения фаз
+    number_output_ends        int, -- количество  выводных концов
+    electric_motor_brushes_id int, -- ид щеток
+    front_bearing_id          int, -- тип переднего подшипника
+    rear_bearing_id           int, -- тип заднего подшипника
+    cos_f                     int, -- cos ф
+    efficiency                int  -- КПД %
 );
 
 -- зарегестрированный двигатель переменного тока
