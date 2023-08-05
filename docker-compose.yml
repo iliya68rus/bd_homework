@@ -7,10 +7,31 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
+      - '5434:5432'
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./postgres/init:/docker-entrypoint-initdb.d
+  db-replica:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5433:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+
+  db15:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5431:5432'
+
   pgadmin4:
     image: dpage/pgadmin4:6.21
     restart: always
@@ -21,6 +42,29 @@ services:
       - '80:80'
     volumes:
       - db-data:/pgadmin/
+
+  mysql-server-80:
+    image: mysql/mysql-server:8.0
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: 123
+      MYSQL_PASSWORD: 123
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1 # !!!дает все пользователям супер права
+    ports:
+      - "3308:3306"
+
+
+  mysql-restore:
+    image: mysql/mysql-server:8.0
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: 123
+      MYSQL_PASSWORD: 123
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1 # !!!дает все пользователям супер права
+    ports:
+      - "3314:3306"
 
 volumes:
   db-data:
