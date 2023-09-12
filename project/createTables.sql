@@ -1,5 +1,3 @@
--- todo проставить ограничения
-
 -- производитель
 CREATE TABLE manufacturer
 (

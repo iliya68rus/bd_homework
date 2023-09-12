@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor</OriginalElement>
+  <nodes>
+    <node x="151.2761524822696" y="1097.5">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_dc_motor_order</node>
+    <node x="597.2761524822696" y="-55.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_motor_excitation</node>
+    <node x="599.5261524822695" y="539.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_dc_motor</node>
+    <node x="1281.590425531915" y="-55.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_transformer</node>
+    <node x="886.1476063829786" y="830.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.repairman</node>
+    <node x="1098.2761524822695" y="1064.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_repair</node>
+    <node x="195.4844858156029" y="-66.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.electric_motor_brushes</node>
+    <node x="-32.0" y="528.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor</node>
+    <node x="602.2761524822696" y="1086.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_repairman</node>
+    <node x="1294.7761524822695" y="1064.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_repair</node>
+    <node x="819.5261524822695" y="583.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_repair</node>
+    <node x="409.2761524822696" y="1064.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_repair</node>
+    <node x="432.2761524822695" y="237.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.factory</node>
+    <node x="822.2761524822696" y="1097.5">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_transformer_order</node>
+    <node x="1008.109485815603" y="-66.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.bearing</node>
+    <node x="703.0678191489362" y="-193.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.manufacturer</node>
+    <node x="108.8807624113474" y="775.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order</node>
+    <node x="-128.0" y="237.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.location_barno</node>
+    <node x="412.48448581560285" y="-55.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_motor</node>
+    <node x="34.0" y="94.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor</node>
+    <node x="1278.090425531915" y="204.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer</node>
+    <node x="343.64760638297855" y="841.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction</node>
+    <node x="634.1476063829786" y="775.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order</node>
+    <node x="1222.2570921985816" y="539.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_transformer</node>
+    <node x="803.2761524822696" y="226.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.workshop_customer</node>
+    <node x="446.5261524822695" y="583.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.status_order</node>
+    <node x="585.2761524822696" y="83.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor</node>
+    <node x="-10.207003546099372" y="-55.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.phase_connection</node>
+    <node x="-105.7238475177304" y="1097.5">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_ac_motor_order</node>
+    <node x="1122.4179964539007" y="775.0">b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.workshop_customer" relationship="REFERENCES">
+      <point x="66.66666666666667" y="-82.5" />
+      <point x="766.1928191489362" y="498.0" />
+      <point x="900.2761524822695" y="498.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.repairman" relationship="REFERENCES">
+      <point x="-47.0" y="-71.5" />
+      <point x="1341.7761524822695" y="1014.0" />
+      <point x="993.1476063829787" y="1014.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.repairman" relationship="REFERENCES">
+      <point x="43.25" y="-71.5" />
+      <point x="539.0261524822696" y="1014.0" />
+      <point x="993.1476063829787" y="1014.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order" relationship="REFERENCES">
+      <point x="-43.25" y="-71.5" />
+      <point x="452.5261524822696" y="1044.0" />
+      <point x="185.8807624113474" y="1044.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.status_order" relationship="REFERENCES">
+      <point x="-51.33333333333334" y="-104.5" />
+      <point x="659.8142730496452" y="755.0" />
+      <point x="513.0261524822695" y="755.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.repairman" relationship="REFERENCES">
+      <point x="43.5" y="-71.5" />
+      <point x="1228.7761524822695" y="1014.0" />
+      <point x="993.1476063829787" y="1014.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.location_barno" relationship="REFERENCES">
+      <point x="-75.0" y="-93.5" />
+      <point x="-7.0" y="508.0" />
+      <point x="-57.0" y="508.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_repair" relationship="REFERENCES">
+      <point x="0.0" y="-104.5" />
+      <point x="1204.9179964539007" y="745.0" />
+      <point x="886.0261524822695" y="745.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.phase_connection" relationship="REFERENCES">
+      <point x="-66.0" y="-181.5" />
+      <point x="67.0" y="63.0" />
+      <point x="70.29299645390063" y="63.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_repairman" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.repairman" relationship="REFERENCES">
+      <point x="50.0" y="-49.5" />
+      <point x="752.2761524822696" y="1014.0" />
+      <point x="993.1476063829787" y="1014.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order" relationship="REFERENCES">
+      <point x="-43.5" y="-71.5" />
+      <point x="1141.7761524822695" y="1024.0" />
+      <point x="711.1476063829786" y="1024.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor" relationship="REFERENCES">
+      <point x="-1.4210854715202004E-14" y="-82.5" />
+      <point x="699.5261524822695" y="488.0" />
+      <point x="684.2761524822696" y="488.0" />
+      <point x="0.0" y="192.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_repairman" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction" relationship="REFERENCES">
+      <point x="-50.0" y="-49.5" />
+      <point x="652.2761524822696" y="1034.0" />
+      <point x="410.14760638297855" y="1034.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_transformer" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.factory" relationship="REFERENCES">
+      <point x="-66.66666666666669" y="-82.5" />
+      <point x="1255.590425531915" y="508.0" />
+      <point x="498.7761524822695" y="508.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.status_order" relationship="REFERENCES">
+      <point x="-55.0" y="-104.5" />
+      <point x="1149.9179964539007" y="755.0" />
+      <point x="513.0261524822695" y="755.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_repair" relationship="REFERENCES">
+      <point x="51.333333333333336" y="-104.5" />
+      <point x="237.21409574468072" y="745.0" />
+      <point x="886.0261524822695" y="745.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_transformer" relationship="REFERENCES">
+      <point x="55.0" y="-104.5" />
+      <point x="1259.9179964539007" y="755.0" />
+      <point x="1322.2570921985816" y="755.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.factory" relationship="REFERENCES">
+      <point x="25.0" y="-93.5" />
+      <point x="93.0" y="508.0" />
+      <point x="498.7761524822695" y="508.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.factory" relationship="REFERENCES">
+      <point x="-66.66666666666669" y="-82.5" />
+      <point x="632.8594858156029" y="508.0" />
+      <point x="498.7761524822695" y="508.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor" relationship="REFERENCES">
+      <point x="-25.0" y="-93.5" />
+      <point x="43.0" y="498.0" />
+      <point x="133.0" y="498.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_transformer" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer" relationship="REFERENCES">
+      <point x="66.66666666666667" y="-82.5" />
+      <point x="1388.9237588652481" y="508.0" />
+      <point x="1360.590425531915" y="508.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_dc_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order" relationship="REFERENCES">
+      <point x="59.5" y="-38.0" />
+      <point x="329.7761524822696" y="1024.0" />
+      <point x="711.1476063829786" y="1024.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.electric_motor_brushes" relationship="REFERENCES">
+      <point x="0.0" y="-181.5" />
+      <point x="133.0" y="63.0" />
+      <point x="293.9844858156029" y="63.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_ac_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction" relationship="REFERENCES">
+      <point x="59.25" y="-38.0" />
+      <point x="72.0261524822696" y="1034.0" />
+      <point x="410.14760638297855" y="1034.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_motor" relationship="REFERENCES">
+      <point x="0.0" y="-192.5" />
+      <point x="684.2761524822696" y="53.0" />
+      <point x="478.98448581560285" y="53.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_dc_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction" relationship="REFERENCES">
+      <point x="-59.5" y="-38.0" />
+      <point x="210.7761524822696" y="1034.0" />
+      <point x="410.14760638297855" y="1034.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.electric_motor_brushes" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.manufacturer" relationship="REFERENCES">
+      <point x="0.0" y="-49.5" />
+      <point x="293.9844858156029" y="-91.0" />
+      <point x="769.5678191489362" y="-91.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.electric_motor_brushes" relationship="REFERENCES">
+      <point x="-66.0" y="-192.5" />
+      <point x="618.2761524822696" y="63.0" />
+      <point x="293.9844858156029" y="63.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_transformer_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction" relationship="REFERENCES">
+      <point x="-64.0" y="-38.0" />
+      <point x="886.2761524822696" y="1034.0" />
+      <point x="410.14760638297855" y="1034.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_repair" relationship="REFERENCES">
+      <point x="51.333333333333336" y="-104.5" />
+      <point x="762.4809397163119" y="745.0" />
+      <point x="886.0261524822695" y="745.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_transformer" relationship="REFERENCES">
+      <point x="0.0" y="-71.5" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor" relationship="REFERENCES">
+      <point x="-51.33333333333334" y="-104.5" />
+      <point x="134.54742907801403" y="755.0" />
+      <point x="68.0" y="755.0" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_motor" relationship="REFERENCES">
+      <point x="66.0" y="-181.5" />
+      <point x="199.0" y="53.0" />
+      <point x="478.98448581560285" y="53.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_transformer" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.workshop_customer" relationship="REFERENCES">
+      <point x="-1.4210854715202004E-14" y="-82.5" />
+      <point x="1322.2570921985816" y="498.0" />
+      <point x="900.2761524822695" y="498.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_ac_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order" relationship="REFERENCES">
+      <point x="-59.25" y="-38.0" />
+      <point x="-46.473847517730405" y="1044.0" />
+      <point x="185.8807624113474" y="1044.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_dc_motor" relationship="REFERENCES">
+      <point x="0.0" y="-104.5" />
+      <point x="711.1476063829786" y="735.0" />
+      <point x="699.5261524822695" y="735.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.malfunction_transformer_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order" relationship="REFERENCES">
+      <point x="64.0" y="-38.0" />
+      <point x="1014.2761524822695" y="1004.0" />
+      <point x="1204.9179964539007" y="1004.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.dc_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.type_motor_excitation" relationship="REFERENCES">
+      <point x="66.0" y="-192.5" />
+      <point x="750.2761524822696" y="63.0" />
+      <point x="694.2761524822696" y="63.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.bearing" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.manufacturer" relationship="REFERENCES">
+      <point x="0.0" y="-49.5" />
+      <point x="1080.109485815603" y="-91.0" />
+      <point x="769.5678191489362" y="-91.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.reg_ac_motor" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.workshop_customer" relationship="REFERENCES">
+      <point x="75.0" y="-93.5" />
+      <point x="143.0" y="498.0" />
+      <point x="900.2761524822695" y="498.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_repair" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.transformer_order" relationship="REFERENCES">
+      <point x="47.0" y="-71.5" />
+      <point x="1435.7761524822695" y="1004.0" />
+      <point x="1204.9179964539007" y="1004.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.ac_motor_order" target="b748b10d-e2b7-4fa2-add1-436fefe6ed07.TABLE:test.status_order" relationship="REFERENCES">
+      <point x="0.0" y="-104.5" />
+      <point x="185.8807624113474" y="755.0" />
+      <point x="513.0261524822695" y="755.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7111025528169014" showDependencies="false" x="461.96030947775625" y="182.52000000000004" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
