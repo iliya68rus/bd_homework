@@ -23,10 +23,12 @@ CREATE TABLE repairman
 -- перечисление какие неисправности может исправить ремонтник
 CREATE TABLE malfunction_repairman
 (
-    fk_malfunction int,    -- ид неисправности
-    fk_repairman   bigint, -- ид ремонтника
-    estimation     int,    -- оценка от 1 до 10
-    PRIMARY KEY (fk_malfunction, fk_repairman)
+    id             bigint PRIMARY KEY AUTO_INCREMENT,
+    fk_malfunction int, -- ид неисправности
+    fk_repairman   int, -- ид ремонтника
+    estimation     int, -- оценка от 1 до 10
+    FOREIGN KEY (fk_malfunction) REFERENCES malfunction (id),
+    FOREIGN KEY (fk_repairman) REFERENCES repairman (id)
 );
 
 -- вид ремонта (ТО1, ТО2, ТО3, КР и т.д.)
@@ -55,16 +57,18 @@ CREATE TABLE workshop_customer
 CREATE TABLE electric_motor_brushes
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
-    fk_manufacturer int,        -- производитель
-    article         varchar(50) -- артикль
+    fk_manufacturer int,         -- производитель
+    article         varchar(50), -- артикль
+    FOREIGN KEY (fk_manufacturer) REFERENCES manufacturer (id)
 );
 
 -- подшипник
 CREATE TABLE bearing
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
-    fk_manufacturer int,        -- производитель
-    article         varchar(50) -- артикль
+    fk_manufacturer int,         -- производитель
+    article         varchar(50), -- артикль
+    FOREIGN KEY (fk_manufacturer) REFERENCES manufacturer (id)
 );
 
 -- вид возбуждения (параллельное, последовательное, смешанное)
@@ -88,7 +92,8 @@ CREATE TABLE transformer
     fk_type_transformer int, -- ид типа трансформатора
     power               int, -- мощность
     voltage_h           int, -- напряжение ВН (высокое напряжение)
-    voltage_l           int  -- напряжение НН (низкое напряжение)
+    voltage_l           int, -- напряжение НН (низкое напряжение)
+    FOREIGN KEY (fk_type_transformer) REFERENCES type_transformer (id)
 );
 
 -- зарегистрированный трансформатор
@@ -99,7 +104,10 @@ CREATE TABLE reg_transformer
     inventory_number     varchar(20), -- инвентарный номер
     fk_transformer       int,         -- ид трансформатора
     fk_factory           int,         -- завод
-    fk_workshop_customer int          -- ид цеха
+    fk_workshop_customer int,         -- ид цеха
+    FOREIGN KEY (fk_transformer) REFERENCES transformer (id),
+    FOREIGN KEY (fk_factory) REFERENCES factory (id),
+    FOREIGN KEY (fk_workshop_customer) REFERENCES workshop_customer (id)
 );
 
 -- статус заказа (ремонт начат, ремонт окончен)
@@ -119,25 +127,32 @@ CREATE TABLE transformer_order
     defect             varchar(500), -- примечание по неполадкам
     date_acceptance    date,         -- дата приемки
     date_issue         date,         -- дата выдачи
-    fk_status_order    int           -- ид статуса заказа
+    fk_status_order    int,          -- ид статуса заказа
+    FOREIGN KEY (fk_reg_transformer) REFERENCES reg_transformer (id),
+    FOREIGN KEY (fk_type_repair) REFERENCES type_repair (id),
+    FOREIGN KEY (fk_status_order) REFERENCES status_order (id)
 );
 
 -- перечисление неисправностей трансформатора
 CREATE TABLE malfunction_transformer_order
 (
+    id                   bigint PRIMARY KEY AUTO_INCREMENT,
     fk_malfunction       int,    -- ид неисправности
     fk_transformer_order bigint, -- ид заказа на трансформатор
-    PRIMARY KEY (fk_malfunction, fk_transformer_order)
+    FOREIGN KEY (fk_malfunction) REFERENCES malfunction (id),
+    FOREIGN KEY (fk_transformer_order) REFERENCES transformer_order (id)
 );
 
 -- ремонт трансформатора (для фиксации всех кто занимался ремонтом)
 CREATE TABLE transformer_repair
 (
     id                   int PRIMARY KEY AUTO_INCREMENT,
-    fk_transformer_order bigint,      -- ид заказа на трансформатор
-    fk_repairman         int,         -- ид ремонтника
-    repair_date          date,        -- дата ремонта
-    note                 varchar(300) -- примечание
+    fk_transformer_order bigint,       -- ид заказа на трансформатор
+    fk_repairman         int,          -- ид ремонтника
+    repair_date          date,         -- дата ремонта
+    note                 varchar(300), -- примечание
+    FOREIGN KEY (fk_transformer_order) REFERENCES transformer_order (id),
+    FOREIGN KEY (fk_repairman) REFERENCES repairman (id)
 );
 
 -- тип двигателя
@@ -165,7 +180,12 @@ CREATE TABLE dc_motor
     fk_electric_motor_brushes int, -- ид щеток
     fk_drive_side_bearing     int, -- ид типа подшипника со стороны привода
     fk_collector_side_bearing int, -- ид типа подшипника со стороны коллектора
-    efficiency                int  -- КПД %
+    efficiency                int, -- КПД %
+    FOREIGN KEY (fk_type_motor) REFERENCES type_motor (id),
+    FOREIGN KEY (fk_type_motor_excitation) REFERENCES type_motor_excitation (id),
+    FOREIGN KEY (fk_electric_motor_brushes) REFERENCES electric_motor_brushes (id),
+    FOREIGN KEY (fk_drive_side_bearing) REFERENCES bearing (id),
+    FOREIGN KEY (fk_collector_side_bearing) REFERENCES bearing (id)
 );
 
 -- зарегистрированный двигатель постоянного тока
@@ -176,7 +196,10 @@ CREATE TABLE reg_dc_motor
     inventory_number     varchar(20), -- инвентарный номер
     fk_dc_motor          int,         -- ид двигателя постоянного тока
     fk_factory           int,         -- завод
-    fk_workshop_customer int          -- ид цеха
+    fk_workshop_customer int,         -- ид цеха
+    FOREIGN KEY (fk_dc_motor) REFERENCES dc_motor (id),
+    FOREIGN KEY (fk_factory) REFERENCES factory (id),
+    FOREIGN KEY (fk_workshop_customer) REFERENCES workshop_customer (id)
 );
 
 -- заказ на двигатель постоянного тока
@@ -189,25 +212,32 @@ CREATE TABLE dc_motor_order
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
     date_issue      date,         -- дата выдачи
-    fk_status_order int           -- ид статуса заказа
+    fk_status_order int,          -- ид статуса заказа
+    FOREIGN KEY (fk_reg_dc_motor) REFERENCES reg_dc_motor (id),
+    FOREIGN KEY (fk_type_repair) REFERENCES type_repair (id),
+    FOREIGN KEY (fk_status_order) REFERENCES status_order (id)
 );
 
 -- перечисление неисправностей двигателя постоянного тока
 CREATE TABLE malfunction_dc_motor_order
 (
+    id                int PRIMARY KEY AUTO_INCREMENT,
     fk_malfunction    int,    -- ид неисправности
     fk_dc_motor_order bigint, -- ид заказа на двигатель постоянного тока
-    PRIMARY KEY (fk_malfunction, fk_dc_motor_order)
+    FOREIGN KEY (fk_malfunction) REFERENCES malfunction (id),
+    FOREIGN KEY (fk_dc_motor_order) REFERENCES dc_motor_order (id)
 );
 
 -- ремонт двигателя постоянного тока (для фиксации всех кто занимался ремонтом)
 CREATE TABLE dc_motor_repair
 (
     id                int PRIMARY KEY AUTO_INCREMENT,
-    fk_dc_motor_order bigint,      -- ид заказа на двигатель постоянного тока
-    fk_repairman      int,         -- ид ремонтника
-    repair_date       date,        -- дата ремонта
-    note              varchar(300) -- примечание
+    fk_dc_motor_order bigint,       -- ид заказа на двигатель постоянного тока
+    fk_repairman      int,          -- ид ремонтника
+    repair_date       date,         -- дата ремонта
+    note              varchar(300), -- примечание
+    FOREIGN KEY (fk_dc_motor_order) REFERENCES dc_motor_order (id),
+    FOREIGN KEY (fk_repairman) REFERENCES repairman (id)
 );
 
 -- расположение барно (коробка выводов)
@@ -241,7 +271,12 @@ CREATE TABLE ac_motor
     fk_front_bearing          int, -- тип переднего подшипника
     fk_rear_bearing           int, -- тип заднего подшипника
     cos_f                     int, -- cos ф
-    efficiency                int  -- КПД %
+    efficiency                int, -- КПД %
+    FOREIGN KEY (fk_type_motor) REFERENCES type_motor (id),
+    FOREIGN KEY (fk_phase_connection) REFERENCES phase_connection (id),
+    FOREIGN KEY (fk_electric_motor_brushes) REFERENCES electric_motor_brushes (id),
+    FOREIGN KEY (fk_front_bearing) REFERENCES bearing (id),
+    FOREIGN KEY (fk_rear_bearing) REFERENCES bearing (id)
 );
 
 -- зарегистрированный двигатель переменного тока
@@ -253,7 +288,11 @@ CREATE TABLE reg_ac_motor
     fk_ac_motor          int,         -- ид двигателя переменного тока
     fk_factory           int,         -- завод
     fk_workshop_customer int,         -- ид цеха
-    fk_location_barno    int          -- ид расположения барно
+    fk_location_barno    int,         -- ид расположения барно
+    FOREIGN KEY (fk_ac_motor) REFERENCES ac_motor (id),
+    FOREIGN KEY (fk_factory) REFERENCES factory (id),
+    FOREIGN KEY (fk_workshop_customer) REFERENCES workshop_customer (id),
+    FOREIGN KEY (fk_location_barno) REFERENCES location_barno (id)
 );
 
 -- заказ на двигатель переменного тока
@@ -266,15 +305,20 @@ CREATE TABLE ac_motor_order
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
     date_issue      date,         -- дата выдачи
-    fk_status_order int           -- ид статуса заказа
+    fk_status_order int,          -- ид статуса заказа
+    FOREIGN KEY (fk_reg_ac_motor) REFERENCES reg_ac_motor (id),
+    FOREIGN KEY (fk_type_repair) REFERENCES type_repair (id),
+    FOREIGN KEY (fk_status_order) REFERENCES status_order (id)
 );
 
 -- перечисление неисправностей двигателя переменного тока
 CREATE TABLE malfunction_ac_motor_order
 (
+    id                int PRIMARY KEY AUTO_INCREMENT,
     fk_malfunction    int,    -- ид неисправности
     fk_ac_motor_order bigint, -- ид заказа на двигатель переменного тока
-    PRIMARY KEY (fk_malfunction, fk_ac_motor_order)
+    FOREIGN KEY (fk_malfunction) REFERENCES malfunction (id),
+    FOREIGN KEY (fk_ac_motor_order) REFERENCES ac_motor_order (id)
 );
 
 -- ремонт двигателя переменного тока (для фиксации всех кто занимался ремонтом)
@@ -284,6 +328,8 @@ CREATE TABLE ac_motor_repair
     fk_ac_motor_order bigint,      -- ид заказа на двигатель переменного тока
     fk_repairman      int,         -- ид ремонтника
     repair_date       date,        -- дата ремонта
-    note              varchar(300) -- примечание
+    note              varchar(300),-- примечание
+    FOREIGN KEY (fk_ac_motor_order) REFERENCES ac_motor_order (id),
+    FOREIGN KEY (fk_repairman) REFERENCES repairman (id)
 );
 
