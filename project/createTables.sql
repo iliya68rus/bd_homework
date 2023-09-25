@@ -17,16 +17,16 @@ CREATE TABLE repairman
 (
     id                        int PRIMARY KEY AUTO_INCREMENT,
     date_next_qualifying_exam date,  -- дата следующего квалификационного экзамена
-    worker_id                 bigint -- ид работника из общей базы компании
+    fk_worker                 bigint -- ид работника из общей базы компании
 );
 
 -- перечисление какие неисправности может исправить ремонтник
 CREATE TABLE malfunction_repairman
 (
-    malfunction_id int,    -- ид неисправности
-    repairman_id   bigint, -- ид ремонтника
+    fk_malfunction int,    -- ид неисправности
+    fk_repairman   bigint, -- ид ремонтника
     estimation     int,    -- оценка от 1 до 10
-    PRIMARY KEY (malfunction_id, repairman_id)
+    PRIMARY KEY (fk_malfunction, fk_repairman)
 );
 
 -- вид ремонта (ТО1, ТО2, ТО3, КР и т.д.)
@@ -48,14 +48,14 @@ CREATE TABLE workshop_customer
 (
     id                    int PRIMARY KEY AUTO_INCREMENT,
     workshop              varchar(400), -- название
-    responsible_worker_id bigint-- ид ответственного работника из общей базы компании
+    fk_responsible_worker bigint-- ид ответственного работника из общей базы компании
 );
 
 -- щётки
 CREATE TABLE electric_motor_brushes
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
-    manufacturer_id int,        -- производитель
+    fk_manufacturer int,        -- производитель
     article         varchar(50) -- артикль
 );
 
@@ -63,7 +63,7 @@ CREATE TABLE electric_motor_brushes
 CREATE TABLE bearing
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
-    manufacturer_id int,        -- производитель
+    fk_manufacturer int,        -- производитель
     article         varchar(50) -- артикль
 );
 
@@ -85,7 +85,7 @@ CREATE TABLE type_transformer
 CREATE TABLE transformer
 (
     id                  int PRIMARY KEY AUTO_INCREMENT,
-    type_transformer_id int, -- ид типа трансформатора
+    fk_type_transformer int, -- ид типа трансформатора
     power               int, -- мощность
     voltage_h           int, -- напряжение ВН (высокое напряжение)
     voltage_l           int  -- напряжение НН (низкое напряжение)
@@ -97,9 +97,9 @@ CREATE TABLE reg_transformer
     id                   int PRIMARY KEY AUTO_INCREMENT,
     serial_number        varchar(20), -- серийный номер
     inventory_number     varchar(20), -- инвентарный номер
-    transformer_id       int,         -- ид трансформатора
-    factory_id           int,         -- завод
-    workshop_customer_id int          -- ид цеха
+    fk_transformer       int,         -- ид трансформатора
+    fk_factory           int,         -- завод
+    fk_workshop_customer int          -- ид цеха
 );
 
 -- статус заказа (ремонт начат, ремонт окончен)
@@ -114,28 +114,28 @@ CREATE TABLE transformer_order
 (
     id                 bigint PRIMARY KEY AUTO_INCREMENT,
     order_number       int,          -- заказ
-    reg_transformer_id int,          -- ид зарегистрированного трансформатора
-    type_repair_id     int,          -- ид вида ремонта
+    fk_reg_transformer int,          -- ид зарегистрированного трансформатора
+    fk_type_repair     int,          -- ид вида ремонта
     defect             varchar(500), -- примечание по неполадкам
     date_acceptance    date,         -- дата приемки
     date_issue         date,         -- дата выдачи
-    status_order_id    int           -- ид статуса заказа
+    fk_status_order    int           -- ид статуса заказа
 );
 
 -- перечисление неисправностей трансформатора
 CREATE TABLE malfunction_transformer_order
 (
-    malfunction_id       int,    -- ид неисправности
-    transformer_order_id bigint, -- ид заказа на трансформатор
-    PRIMARY KEY (malfunction_id, transformer_order_id)
+    fk_malfunction       int,    -- ид неисправности
+    fk_transformer_order bigint, -- ид заказа на трансформатор
+    PRIMARY KEY (fk_malfunction, fk_transformer_order)
 );
 
 -- ремонт трансформатора (для фиксации всех кто занимался ремонтом)
 CREATE TABLE transformer_repair
 (
     id                   int PRIMARY KEY AUTO_INCREMENT,
-    transformer_order_id bigint,      -- ид заказа на трансформатор
-    repairman_id         int,         -- ид ремонтника
+    fk_transformer_order bigint,      -- ид заказа на трансформатор
+    fk_repairman         int,         -- ид ремонтника
     repair_date          date,        -- дата ремонта
     note                 varchar(300) -- примечание
 );
@@ -151,20 +151,20 @@ CREATE TABLE type_motor
 CREATE TABLE dc_motor
 (
     id                        int PRIMARY KEY AUTO_INCREMENT,
-    type_motor_id             int, -- ид типа двигателя
+    fk_type_motor             int, -- ид типа двигателя
     power                     int, -- мощность
     inductor_voltage          int, -- напряжение индуктора
     inductor_current          int, -- ток индуктора
     number_revolutions        int, -- число оборотов
     armature_voltage          int, -- напряжение якоря
     armature_current          int, -- ток якоря
-    type_motor_excitation_id  int, -- ид вида возбуждения
+    fk_type_motor_excitation  int, -- ид вида возбуждения
     excitation_voltage        int, -- напряжение возбуждения
     excitation_current        int, -- ток возбуждения
     number_output_ends        int, -- количество  выводных концов
-    electric_motor_brushes_id int, -- ид щеток
-    drive_side_bearing_id     int, -- ид типа подшипника со стороны привода
-    collector_side_bearing_id int, -- ид типа подшипника со стороны коллектора
+    fk_electric_motor_brushes int, -- ид щеток
+    fk_drive_side_bearing     int, -- ид типа подшипника со стороны привода
+    fk_collector_side_bearing int, -- ид типа подшипника со стороны коллектора
     efficiency                int  -- КПД %
 );
 
@@ -174,9 +174,9 @@ CREATE TABLE reg_dc_motor
     id                   int PRIMARY KEY AUTO_INCREMENT,
     serial_number        varchar(20), -- серийный номер
     inventory_number     varchar(20), -- инвентарный номер
-    dc_motor_id          int,         -- ид двигателя постоянного тока
-    factory_id           int,         -- завод
-    workshop_customer_id int          -- ид цеха
+    fk_dc_motor          int,         -- ид двигателя постоянного тока
+    fk_factory           int,         -- завод
+    fk_workshop_customer int          -- ид цеха
 );
 
 -- заказ на двигатель постоянного тока
@@ -184,28 +184,28 @@ CREATE TABLE dc_motor_order
 (
     id              bigint PRIMARY KEY AUTO_INCREMENT,
     order_number    int,          -- заказ
-    reg_dc_motor_id int,          -- ид зарегистрированного двигателя постоянного тока
-    type_repair_id  int,          -- ид вида ремонта
+    fk_reg_dc_motor int,          -- ид зарегистрированного двигателя постоянного тока
+    fk_type_repair  int,          -- ид вида ремонта
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
     date_issue      date,         -- дата выдачи
-    status_order_id int           -- ид статуса заказа
+    fk_status_order int           -- ид статуса заказа
 );
 
 -- перечисление неисправностей двигателя постоянного тока
 CREATE TABLE malfunction_dc_motor_order
 (
-    malfunction_id    int,    -- ид неисправности
-    dc_motor_order_id bigint, -- ид заказа на двигатель постоянного тока
-    PRIMARY KEY (malfunction_id, dc_motor_order_id)
+    fk_malfunction    int,    -- ид неисправности
+    fk_dc_motor_order bigint, -- ид заказа на двигатель постоянного тока
+    PRIMARY KEY (fk_malfunction, fk_dc_motor_order)
 );
 
 -- ремонт двигателя постоянного тока (для фиксации всех кто занимался ремонтом)
 CREATE TABLE dc_motor_repair
 (
     id                int PRIMARY KEY AUTO_INCREMENT,
-    dc_motor_order_id bigint,      -- ид заказа на двигатель постоянного тока
-    repairman_id      int,         -- ид ремонтника
+    fk_dc_motor_order bigint,      -- ид заказа на двигатель постоянного тока
+    fk_repairman      int,         -- ид ремонтника
     repair_date       date,        -- дата ремонта
     note              varchar(300) -- примечание
 );
@@ -228,18 +228,18 @@ CREATE TABLE phase_connection
 CREATE TABLE ac_motor
 (
     id                        int PRIMARY KEY AUTO_INCREMENT,
-    type_motor_id             int, -- ид типа двигателя
+    fk_type_motor             int, -- ид типа двигателя
     power                     int, -- мощность
     voltage                   int, -- напряжение
     rated_current             int, -- номинальный ток
     number_revolutions        int, -- число оборотов
     rotor_voltage             int, -- напряжение ротора
     rotor_current             int, -- ток ротора
-    phase_connection_id       int, -- ид соединения фаз
+    fk_phase_connection       int, -- ид соединения фаз
     number_output_ends        int, -- количество  выводных концов
-    electric_motor_brushes_id int, -- ид щеток
-    front_bearing_id          int, -- тип переднего подшипника
-    rear_bearing_id           int, -- тип заднего подшипника
+    fk_electric_motor_brushes int, -- ид щеток
+    fk_front_bearing          int, -- тип переднего подшипника
+    fk_rear_bearing           int, -- тип заднего подшипника
     cos_f                     int, -- cos ф
     efficiency                int  -- КПД %
 );
@@ -250,10 +250,10 @@ CREATE TABLE reg_ac_motor
     id                   int PRIMARY KEY AUTO_INCREMENT,
     serial_number        varchar(20), -- серийный номер
     inventory_number     varchar(20), -- инвентарный номер
-    ac_motor_id          int,         -- ид двигателя переменного тока
-    factory_id           int,         -- завод
-    workshop_customer_id int,         -- ид цеха
-    location_barno_id    int          -- ид расположения барно
+    fk_ac_motor          int,         -- ид двигателя переменного тока
+    fk_factory           int,         -- завод
+    fk_workshop_customer int,         -- ид цеха
+    fk_location_barno    int          -- ид расположения барно
 );
 
 -- заказ на двигатель переменного тока
@@ -261,28 +261,28 @@ CREATE TABLE ac_motor_order
 (
     id              bigint PRIMARY KEY AUTO_INCREMENT,
     order_number    int,          -- заказ
-    reg_ac_motor_id int,          -- ид зарегистрированного двигателя переменного тока
-    type_repair_id  int,          -- ид вида ремонта
+    fk_reg_ac_motor int,          -- ид зарегистрированного двигателя переменного тока
+    fk_type_repair  int,          -- ид вида ремонта
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
     date_issue      date,         -- дата выдачи
-    status_order_id int           -- ид статуса заказа
+    fk_status_order int           -- ид статуса заказа
 );
 
 -- перечисление неисправностей двигателя переменного тока
 CREATE TABLE malfunction_ac_motor_order
 (
-    malfunction_id    int,    -- ид неисправности
-    ac_motor_order_id bigint, -- ид заказа на двигатель переменного тока
-    PRIMARY KEY (malfunction_id, ac_motor_order_id)
+    fk_malfunction    int,    -- ид неисправности
+    fk_ac_motor_order bigint, -- ид заказа на двигатель переменного тока
+    PRIMARY KEY (fk_malfunction, fk_ac_motor_order)
 );
 
 -- ремонт двигателя переменного тока (для фиксации всех кто занимался ремонтом)
 CREATE TABLE ac_motor_repair
 (
     id                int PRIMARY KEY AUTO_INCREMENT,
-    ac_motor_order_id bigint,      -- ид заказа на двигатель переменного тока
-    repairman_id      int,         -- ид ремонтника
+    fk_ac_motor_order bigint,      -- ид заказа на двигатель переменного тока
+    fk_repairman      int,         -- ид ремонтника
     repair_date       date,        -- дата ремонта
     note              varchar(300) -- примечание
 );
