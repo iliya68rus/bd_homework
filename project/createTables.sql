@@ -5,7 +5,7 @@ CREATE TABLE manufacturer
     name varchar(255) -- название
 );
 
--- неисправность (щетки, подшипки, вал, обмотка)
+-- неисправность (щетки, подшипник, вал, обмотка)
 CREATE TABLE malfunction
 (
     id   int PRIMARY KEY AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE repairman
     worker_id                 bigint -- ид работника из общей базы компании
 );
 
--- перечисление какие несиправности может исправить ремонтник
+-- перечисление какие неисправности может исправить ремонтник
 CREATE TABLE malfunction_repairman
 (
     malfunction_id int,    -- ид неисправности
@@ -56,7 +56,7 @@ CREATE TABLE electric_motor_brushes
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
     manufacturer_id int,        -- производитель
-    article         varchar(50) -- артикуль
+    article         varchar(50) -- артикль
 );
 
 -- подшипник
@@ -64,7 +64,7 @@ CREATE TABLE bearing
 (
     id              int PRIMARY KEY AUTO_INCREMENT,
     manufacturer_id int,        -- производитель
-    article         varchar(50) -- артикуль
+    article         varchar(50) -- артикль
 );
 
 -- вид возбуждения (параллельное, последовательное, смешанное)
@@ -91,7 +91,7 @@ CREATE TABLE transformer
     voltage_l           int  -- напряжение НН (низкое напряжение)
 );
 
--- зарегестрированный трансформатор
+-- зарегистрированный трансформатор
 CREATE TABLE reg_transformer
 (
     id                   int PRIMARY KEY AUTO_INCREMENT,
@@ -114,7 +114,7 @@ CREATE TABLE transformer_order
 (
     id                 bigint PRIMARY KEY AUTO_INCREMENT,
     order_number       int,          -- заказ
-    reg_transformer_id int,          -- ид зарегестрированного трансформатора
+    reg_transformer_id int,          -- ид зарегистрированного трансформатора
     type_repair_id     int,          -- ид вида ремонта
     defect             varchar(500), -- примечание по неполадкам
     date_acceptance    date,         -- дата приемки
@@ -168,7 +168,7 @@ CREATE TABLE dc_motor
     efficiency                int  -- КПД %
 );
 
--- зарегестрированный двигатель постоянного тока
+-- зарегистрированный двигатель постоянного тока
 CREATE TABLE reg_dc_motor
 (
     id                   int PRIMARY KEY AUTO_INCREMENT,
@@ -184,7 +184,7 @@ CREATE TABLE dc_motor_order
 (
     id              bigint PRIMARY KEY AUTO_INCREMENT,
     order_number    int,          -- заказ
-    reg_dc_motor_id int,          -- ид зарегестрированного двигателя постоянного тока
+    reg_dc_motor_id int,          -- ид зарегистрированного двигателя постоянного тока
     type_repair_id  int,          -- ид вида ремонта
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
@@ -244,7 +244,7 @@ CREATE TABLE ac_motor
     efficiency                int  -- КПД %
 );
 
--- зарегестрированный двигатель переменного тока
+-- зарегистрированный двигатель переменного тока
 CREATE TABLE reg_ac_motor
 (
     id                   int PRIMARY KEY AUTO_INCREMENT,
@@ -253,7 +253,7 @@ CREATE TABLE reg_ac_motor
     ac_motor_id          int,         -- ид двигателя переменного тока
     factory_id           int,         -- завод
     workshop_customer_id int,         -- ид цеха
-    location_barno_id    int          -- ид расположежния барно
+    location_barno_id    int          -- ид расположения барно
 );
 
 -- заказ на двигатель переменного тока
@@ -261,7 +261,7 @@ CREATE TABLE ac_motor_order
 (
     id              bigint PRIMARY KEY AUTO_INCREMENT,
     order_number    int,          -- заказ
-    reg_ac_motor_id int,          -- ид зарегестрированного двигателя переменного тока
+    reg_ac_motor_id int,          -- ид зарегистрированного двигателя переменного тока
     type_repair_id  int,          -- ид вида ремонта
     defect          varchar(500), -- примечание по неполадкам
     date_acceptance date,         -- дата приемки
